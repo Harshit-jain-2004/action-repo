@@ -18,3 +18,5 @@ jobs:
           elif [ "${{ github.event_name }}" == "pull_request" ]; then
             curl -X POST -H "Content-Type: application/json" -d '{"action": "'${{ github.event_name }}'", "author": "'${{ github.actor }}'", "ref": "'${{ github.ref }}'", "timestamp": "'${{ github.event.head_commit.timestamp }}'"}' https://732d-2405-201-681a-3850-fc58-82b7-342d-a2f2.ngrok-free.app/webhook
           fi
+      - name: Debug GitHub Context
+        run: echo '${{ toJson(github) }}'
